@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  servicify-db:
+    image: postgres:14
+    container_name: 'servicify-db'
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: servicify
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 6432:5432
