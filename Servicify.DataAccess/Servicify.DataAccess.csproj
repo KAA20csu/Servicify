@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Servicify.Core\Servicify.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
 </Project>

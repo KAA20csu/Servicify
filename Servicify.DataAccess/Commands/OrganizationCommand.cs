@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Servicify.Core;
+﻿using Servicify.Core;
 using Servicify.DataAccess.Commands.Contracts;
 
 namespace Servicify.DataAccess.Commands

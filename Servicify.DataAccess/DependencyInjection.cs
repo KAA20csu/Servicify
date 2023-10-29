@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Servicify.DataAccess.Commands;
 using Servicify.DataAccess.Commands.Contracts;
+using Servicify.DataAccess.Queries;
+using Servicify.DataAccess.Queries.Contracts;
 
 
 namespace Servicify.DataAccess
@@ -26,6 +28,12 @@ namespace Servicify.DataAccess
             services.AddTransient<IClientCommand, ClientCommand>();
             services.AddTransient<IAppointmentCommand, AppointmentCommand>();
             services.AddTransient<IAvailableTimeCommand, AvailableTimeCommand>();
+
+            services.AddTransient<IOrganizationQuery, OrganizationQuery>();
+            services.AddTransient<IServiceQuery, ServiceQuery>();
+            services.AddTransient<IClientQuery, ClientQuery>();
+            services.AddTransient<IAppointmentQuery, AppointmentQuery>();
+            services.AddTransient<IAvailableTimeQuery, AvailableTimeQuery>();
         }
     }
 }
