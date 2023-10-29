@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Servicify.Application\Servicify.Application.csproj" />
     <ProjectReference Include="..\Servicify.DataAccess\Servicify.DataAccess.csproj" />
   </ItemGroup>
 

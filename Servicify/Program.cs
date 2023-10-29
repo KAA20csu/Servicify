@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Servicify.Application;
 using Servicify.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddSwaggerGen();
 var configuration = builder.Configuration;
 
 builder.Services.AddPersistence(configuration);
+builder.Services.AddApplication(configuration);
 
 
 var app = builder.Build();
