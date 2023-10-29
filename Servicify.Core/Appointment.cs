@@ -1,17 +1,15 @@
-﻿namespace Servicify.Core
+﻿namespace Servicify.Core;
+
+public class Appointment : IIdentityEntity
 {
-    public class Appointment : IIdentityEntity
+    private Appointment()
     {
-        public long Id { get; set; }
-        public DateTime DateTime { get; set; }
-        public long ServiceId { get; set; }
-        public Service Service { get; set; }
-        public long ClientId { get; set; }
-        public Client Client { get; set; }
-
-        private Appointment()
-        {
-
-        }
     }
+
+    public DateTime DateTime { get; set; }
+    public long ServiceId { get; set; }
+    public Service Service { get; set; }
+    public long ClientId { get; set; }
+    public Client Client { get; set; }
+    public long Id { get; set; }
 }

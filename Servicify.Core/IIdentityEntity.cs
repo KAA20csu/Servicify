@@ -1,7 +1,6 @@
-﻿namespace Servicify.Core
+﻿namespace Servicify.Core;
+
+public interface IIdentityEntity
 {
-    public interface IIdentityEntity
-    {
-        public long Id { get; }
-    }
+    public long Id { get; }
 }

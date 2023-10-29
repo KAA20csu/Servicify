@@ -18,12 +18,12 @@ builder.Services.AddApplication(configuration);
 var app = builder.Build();
 
 app.UseCors(
-        corsPolicyBuilder => corsPolicyBuilder
-            .AllowAnyHeader()
-            .SetIsOriginAllowed(_ => true)
-            .AllowAnyMethod()
-            .AllowAnyOrigin()
-    );
+    corsPolicyBuilder => corsPolicyBuilder
+        .AllowAnyHeader()
+        .SetIsOriginAllowed(_ => true)
+        .AllowAnyMethod()
+        .AllowAnyOrigin()
+);
 app.UseStaticFiles();
 if (builder.Environment.EnvironmentName == "Debug")
 {

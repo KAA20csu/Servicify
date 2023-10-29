@@ -1,11 +1,10 @@
 ﻿using Servicify.Core;
 
-namespace Servicify.DataAccess.Commands.Contracts
+namespace Servicify.DataAccess.Commands.Contracts;
+
+public interface IClientCommand
 {
-    public interface IClientCommand
-    { 
-        public Task<long> CreateAsync(Client client);
-        public Task DeleteAsync(Client client); 
-        public Task UpdateAsync(Client client);
-    }
+    public Task<long> CreateAsync(Client client);
+    public Task DeleteAsync(Client client);
+    public Task UpdateAsync(Client client);
 }

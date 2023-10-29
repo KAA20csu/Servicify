@@ -1,9 +1,8 @@
 ﻿using Servicify.Core;
 
-namespace Servicify.DataAccess.Queries.Contracts
+namespace Servicify.DataAccess.Queries.Contracts;
+
+public interface IAvailableTimeQuery
 {
-    public interface IAvailableTimeQuery
-    {
-        public Task<AvailableTime> FindByIdAsync(long id);
-    }
+    public Task<AvailableTime> FindByIdAsync(long id);
 }

@@ -1,8 +1,7 @@
 ﻿using Servicify.Application.Services.Contracts;
 
-namespace Servicify.Application.Services
+namespace Servicify.Application.Services;
+
+public class ClientService : IClientService
 {
-    public class ClientService : IClientService
-    {
-    }
 }

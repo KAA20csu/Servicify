@@ -1,9 +1,8 @@
 ﻿using Servicify.Core;
 
-namespace Servicify.DataAccess.Queries.Contracts
+namespace Servicify.DataAccess.Queries.Contracts;
+
+public interface IAppointmentQuery
 {
-    public interface IAppointmentQuery
-    {
-        public Task<Appointment> FindByIdAsync(long id);
-    }
+    public Task<Appointment> FindByIdAsync(long id);
 }

@@ -1,6 +1,5 @@
-﻿namespace Servicify.Application.Services.Contracts
+﻿namespace Servicify.Application.Services.Contracts;
+
+public interface IOrganizationService
 {
-    public interface IOrganizationService
-    {
-    }
 }
