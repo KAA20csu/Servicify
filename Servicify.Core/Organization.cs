@@ -1,6 +1,6 @@
 ﻿namespace Servicify.Core
 {
-    public class Organization
+    public class Organization : IIdentityEntity
     {
         public long Id { get; set; }
         public string Name { get; set; }

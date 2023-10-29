@@ -1,6 +1,6 @@
 ﻿namespace Servicify.Core
 {
-    public class Client
+    public class Client : IIdentityEntity
     {
         public long Id { get; set; }
         public string FirstName { get; set; }
@@ -8,5 +8,10 @@
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public List<Appointment> Appointments { get; set; }
+
+        private Client()
+        {
+
+        }
     }
 }
