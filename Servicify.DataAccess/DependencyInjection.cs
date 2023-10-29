@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Servicify.DataAccess.Commands;
+using Servicify.DataAccess.Commands.Contracts;
 
 
 namespace Servicify.DataAccess
@@ -19,6 +21,11 @@ namespace Servicify.DataAccess
             });
 
             services.AddScoped<AppDbContext>();
+            services.AddTransient<IOrganizationCommand, OrganizationCommand>();
+            services.AddTransient<IServiceCommand, ServiceCommand>();
+            services.AddTransient<IClientCommand, ClientCommand>();
+            services.AddTransient<IAppointmentCommand, AppointmentCommand>();
+            services.AddTransient<IAvailableTimeCommand, AvailableTimeCommand>();
         }
     }
 }
