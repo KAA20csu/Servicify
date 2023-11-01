@@ -1,0 +1,19 @@
+﻿@page
+@model BookingModel
+@{
+    ViewData["Title"] = "Запись на услугу";
+    <link rel="stylesheet" href="~/css/book-service.css" />
+}
+
+<h1>Запись на услугу ИМЯ УСЛУГИ</h1>
+
+<div class="booking-options">
+    @for (int i = 1; i < 10; i++) 
+    {
+        <div class="booking-slot">
+            <div class="slot-date">@i.09.2023</div>
+            <div class="slot-time">13:00</div>
+            <button class="btn btn-primary">Записаться</button>
+        </div>
+    }
+</div>

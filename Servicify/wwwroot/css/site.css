@@ -18,5 +18,131 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    background-color: #f8f8f8;
+    font-family: 'Comfortaa', sans-serif; /* Добавим шрифт Comfortaa */
+}
+
+.logo h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.buttons a {
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #3498db 0%, #2980b9 100%);
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.register-button:hover {
+    background: linear-gradient(to bottom, #2980b9 0%, #3498db 100%);
+    transition: background 0.3s ease;
+}
+
+
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.service-card {
+    width: calc(30% - 20px); /* Уменьшаем на 20px из-за margin */
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.service-title {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.service-price {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.service-organization {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1rem;
+    color: #555;
+}
+
+
+
+.card {
+    width: 30%;
+    margin: 0 1% 20px 1%;
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.card-text {
+    font-family: 'Comfortaa', sans-serif;
+    color: #555;
+    text-align: center;
+}
+
+.btn-primary {
+    font-family: 'Comfortaa', sans-serif;
+    background: linear-gradient(to bottom, #3498db 0%, #2980b9 100%);
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to bottom, #2980b9 0%, #3498db 100%);
+    transition: background 0.3s ease;
 }

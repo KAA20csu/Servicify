@@ -5,11 +5,11 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servicify", "Servicify\Servicify.csproj", "{9FE6096A-55EE-4EB2-B2C1-A5841B1B4598}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicify.Core", "Servicify.Core\Servicify.Core.csproj", "{E6030F97-4E07-4D33-AF1E-2C382240237F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servicify.Core", "Servicify.Core\Servicify.Core.csproj", "{E6030F97-4E07-4D33-AF1E-2C382240237F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicify.Application", "Servicify.Application\Servicify.Application.csproj", "{AE953FE0-27C5-4052-9691-31011E692E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servicify.Application", "Servicify.Application\Servicify.Application.csproj", "{AE953FE0-27C5-4052-9691-31011E692E07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicify.DataAccess", "Servicify.DataAccess\Servicify.DataAccess.csproj", "{0E07904D-9998-4896-B704-2B9BF70F88AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servicify.DataAccess", "Servicify.DataAccess\Servicify.DataAccess.csproj", "{0E07904D-9998-4896-B704-2B9BF70F88AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

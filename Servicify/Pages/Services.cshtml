@@ -1,0 +1,17 @@
+﻿@page
+@model ServicesModel
+@{
+    ViewData["Title"] = "Услуги";
+}
+
+<div class="service-cards">
+    @for(int i = 0; i < 10; i++)
+    {
+        <div class="service-card">
+            <h2 class="service-title">Услуга @i</h2>
+            <p class="service-price">Цена: 1000</p>
+            <p class="service-organization">Организация @i</p>
+            <button class="btn btn-primary">Записаться @i</button>
+        </div>
+    }
+</div>
