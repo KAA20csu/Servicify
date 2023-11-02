@@ -10,4 +10,8 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Servicify.DataAccess\Servicify.DataAccess.csproj" />
+	</ItemGroup>
 </Project>
