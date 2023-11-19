@@ -6,14 +6,6 @@ public class Service : IIdentityEntity
     {
     }
 
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public long OrganizationId { get; set; }
-    public Organization Organization { get; set; }
-    public List<Appointment> Appointments { get; set; }
-    public List<AvailableTime> AvailableTimes { get; set; }
-    public long Id { get; set; }
-
     public Service(string name, string description, long organizationId, List<Appointment> appointments)
     {
         Name = name;
@@ -21,4 +13,12 @@ public class Service : IIdentityEntity
         OrganizationId = organizationId;
         Appointments = appointments;
     }
+
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public long OrganizationId { get; set; }
+    public Organization Organization { get; set; }
+    public List<Appointment> Appointments { get; set; }
+    public List<AvailableTime> AvailableTimes { get; set; }
+    public long Id { get; set; }
 }

@@ -20,4 +20,10 @@ public class AvailableTimeQuery : IAvailableTimeQuery
             .Where(x => x.Id == id)
             .SingleOrDefaultAsync())!;
     }
+
+    public async Task<List<AvailableTime>> GetAllAsync(long id)
+    {
+        return await _appDbContext
+            .AvailableTimes.AsNoTracking().ToListAsync();
+    }
 }

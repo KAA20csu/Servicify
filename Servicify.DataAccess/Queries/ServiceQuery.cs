@@ -28,4 +28,10 @@ public class ServiceQuery : IServiceQuery
             .Where(x => x.Name == name)
             .SingleOrDefaultAsync())!;
     }
+
+    public async Task<List<Service>> GetAllAsync(string name)
+    {
+        return await _appDbContext
+            .Services.AsNoTracking().ToListAsync();
+    }
 }

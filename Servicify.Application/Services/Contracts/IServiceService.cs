@@ -1,5 +1,5 @@
-﻿using Servicify.Core;
-using Servicify.Requests;
+﻿using Servicify.Application.Requests;
+using Servicify.Core;
 
 namespace Servicify.Application.Services.Contracts;
 

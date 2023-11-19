@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Servicify.Pages
+namespace Servicify.Pages;
+
+public class ServicesModel : PageModel
 {
-    public class ServicesModel : PageModel
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }

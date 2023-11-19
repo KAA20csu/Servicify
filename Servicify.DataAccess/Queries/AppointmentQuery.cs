@@ -20,4 +20,10 @@ public class AppointmentQuery : IAppointmentQuery
             .Where(x => x.Id == id)
             .SingleOrDefaultAsync())!;
     }
+
+    public async Task<List<Appointment>> GetAllAsync(long id)
+    {
+        return await _appDbContext
+            .Appointments.AsNoTracking().ToListAsync();
+    }
 }

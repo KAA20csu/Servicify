@@ -16,14 +16,14 @@ public class AppointmentService : IAppointmentService
         _appointmentCommand = appointmentCommand;
         _availableTimeQuery = availableTimeQuery;
     }
-    
+
     public async Task<long> CreateAsync(CreateAppointmentRequest createAppointmentRequest)
     {
         var availableTime = await _availableTimeQuery.FindByIdAsync(createAppointmentRequest.AvailableTimeId);
         var appointment = new Appointment(
-            availableTime.Date, 
+            availableTime.Date,
             createAppointmentRequest.ServiceId,
-            createAppointmentRequest.ClientId); 
+            createAppointmentRequest.ClientId);
         return await _appointmentCommand.CreateAsync(appointment);
     }
 

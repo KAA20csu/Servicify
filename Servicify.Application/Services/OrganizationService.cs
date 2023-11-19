@@ -12,7 +12,7 @@ public class OrganizationService : IOrganizationService
     {
         _organizationCommand = organizationCommand;
     }
-    
+
     public async Task<long> CreateAsync(Organization organization)
     {
         return await _organizationCommand.CreateAsync(organization);

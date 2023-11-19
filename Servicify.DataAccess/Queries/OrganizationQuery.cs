@@ -28,4 +28,10 @@ public class OrganizationQuery : IOrganizationQuery
             .Where(x => x.Name == name)
             .SingleOrDefaultAsync())!;
     }
+
+    public async Task<List<Organization>> GetAllAsync(string name)
+    {
+        return await _appDbContext
+            .Organizations.AsNoTracking().ToListAsync();
+    }
 }

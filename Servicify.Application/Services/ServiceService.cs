@@ -1,27 +1,27 @@
-﻿using Servicify.Application.Services.Contracts;
+﻿using Servicify.Application.Requests;
+using Servicify.Application.Services.Contracts;
 using Servicify.Core;
 using Servicify.DataAccess.Commands.Contracts;
-using Servicify.Requests;
 
 namespace Servicify.Application.Services;
 
 public class ServiceService : IServiceService
 {
-    private readonly IServiceCommand _serviceCommand;
     private readonly IAvailableTimeService _availableTimeService;
+    private readonly IServiceCommand _serviceCommand;
 
     public ServiceService(IServiceCommand serviceCommand, IAvailableTimeService availableTimeService)
     {
         _serviceCommand = serviceCommand;
         _availableTimeService = availableTimeService;
     }
-    
+
     public async Task<long> CreateAsync(ServiceCreateRequest serviceCreateRequest)
     {
         var service = new Service(
-            serviceCreateRequest.Name, 
+            serviceCreateRequest.Name,
             serviceCreateRequest.Description,
-            serviceCreateRequest.OrganizationId, 
+            serviceCreateRequest.OrganizationId,
             null);
         var serviceId = await _serviceCommand.CreateAsync(service);
         foreach (var date in serviceCreateRequest.AvailableTime)
@@ -29,6 +29,7 @@ public class ServiceService : IServiceService
             var availableTime = new AvailableTime(serviceId, date);
             await _availableTimeService.CreateAsync(availableTime);
         }
+
         return serviceId;
     }
 

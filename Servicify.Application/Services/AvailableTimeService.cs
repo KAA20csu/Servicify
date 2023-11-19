@@ -12,7 +12,7 @@ public class AvailableTimeService : IAvailableTimeService
     {
         _availableTimeCommand = availableTimeCommand;
     }
-    
+
     public async Task<long> CreateAsync(AvailableTime availableTime)
     {
         return await _availableTimeCommand.CreateAsync(availableTime);

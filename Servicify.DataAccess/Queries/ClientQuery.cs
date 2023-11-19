@@ -28,4 +28,10 @@ public class ClientQuery : IClientQuery
             .Where(x => x.FirstName == firstName && x.LastName == lastName)
             .SingleOrDefaultAsync())!;
     }
+
+    public async Task<List<Client>> GetAllAsync(string firstName, string lastName)
+    {
+        return await _appDbContext
+            .Clients.AsNoTracking().ToListAsync();
+    }
 }

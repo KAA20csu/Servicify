@@ -12,7 +12,7 @@ public class ClientService : IClientService
     {
         _clientCommand = clientCommand;
     }
-    
+
     public async Task<long> CreateAsync(Client client)
     {
         return await _clientCommand.CreateAsync(client);
