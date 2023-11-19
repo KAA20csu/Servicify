@@ -13,4 +13,12 @@ public class Service : IIdentityEntity
     public List<Appointment> Appointments { get; set; }
     public List<AvailableTime> AvailableTimes { get; set; }
     public long Id { get; set; }
+
+    public Service(string name, string description, long organizationId, List<Appointment> appointments)
+    {
+        Name = name;
+        Description = description;
+        OrganizationId = organizationId;
+        Appointments = appointments;
+    }
 }

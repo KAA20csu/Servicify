@@ -2,8 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Servicify.Application.Services;
 using Servicify.Application.Services.Contracts;
-using Servicify.DataAccess.Commands;
-using Servicify.DataAccess.Commands.Contracts;
 
 namespace Servicify.Application;
 
