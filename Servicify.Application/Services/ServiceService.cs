@@ -2,18 +2,23 @@
 using Servicify.Application.Services.Contracts;
 using Servicify.Core;
 using Servicify.DataAccess.Commands.Contracts;
+using Servicify.DataAccess.Queries.Contracts;
 
 namespace Servicify.Application.Services;
 
 public class ServiceService : IServiceService
 {
     private readonly IAvailableTimeService _availableTimeService;
+    private readonly IClientQuery _clientQuery;
     private readonly IServiceCommand _serviceCommand;
+    private readonly IServiceQuery _serviceQuery;
 
-    public ServiceService(IServiceCommand serviceCommand, IAvailableTimeService availableTimeService)
+    public ServiceService(IServiceCommand serviceCommand, IAvailableTimeService availableTimeService, IClientQuery clientQuery, IServiceQuery serviceQuery)
     {
         _serviceCommand = serviceCommand;
         _availableTimeService = availableTimeService;
+        _clientQuery = clientQuery;
+        _serviceQuery = serviceQuery;
     }
 
     public async Task<long> CreateAsync(ServiceCreateRequest serviceCreateRequest)
@@ -31,6 +36,15 @@ public class ServiceService : IServiceService
         }
 
         return serviceId;
+    }
+
+    public async Task Subscribe(ServiceSubscribeRequest serviceSubscribeRequest)
+    {
+        var service = await _serviceQuery.FindByIdAsync(serviceSubscribeRequest.ServiceId);
+        var client = await _clientQuery.FindByIdAsync(serviceSubscribeRequest.ClientId);
+        client.Subscriptions.Add(service);
+        service.Subscribers.Add(client);
+        await _serviceCommand.UpdateAsync(service);
     }
 
     public async Task DeleteAsync(Service service)

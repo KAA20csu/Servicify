@@ -12,6 +12,7 @@ public class Service : IIdentityEntity
         Description = description;
         OrganizationId = organizationId;
         Appointments = appointments;
+        Subscribers = new List<Client>();
     }
 
     public string Name { get; set; }
@@ -20,5 +21,6 @@ public class Service : IIdentityEntity
     public Organization Organization { get; set; }
     public List<Appointment> Appointments { get; set; }
     public List<AvailableTime> AvailableTimes { get; set; }
+    public List<Client> Subscribers { get; set; }
     public long Id { get; set; }
 }

@@ -16,7 +16,7 @@ public class ServiceQuery : IServiceQuery
     public async Task<Service> FindByIdAsync(long id)
     {
         return (await _appDbContext
-            .Services
+            .Services.Include(x => x.Subscribers)
             .Where(x => x.Id == id)
             .SingleOrDefaultAsync())!;
     }

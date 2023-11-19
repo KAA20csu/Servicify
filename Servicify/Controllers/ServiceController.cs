@@ -20,4 +20,10 @@ public class ServiceController : ControllerBase
     {
         return _serviceService.CreateAsync(serviceCreateRequest);
     }
+
+    [HttpPost("subscribe")]
+    public Task Subscribe(ServiceSubscribeRequest serviceSubscribeRequest)
+    {
+        return _serviceService.Subscribe(serviceSubscribeRequest);
+    }
 }

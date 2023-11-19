@@ -17,6 +17,7 @@ public class ClientQuery : IClientQuery
     {
         return (await _appDbContext
             .Clients
+            .Include(x => x.Subscriptions)
             .Where(x => x.Id == id)
             .SingleOrDefaultAsync())!;
     }

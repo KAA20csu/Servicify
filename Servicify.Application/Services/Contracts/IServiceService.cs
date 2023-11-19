@@ -8,4 +8,5 @@ public interface IServiceService
     public Task<long> CreateAsync(ServiceCreateRequest serviceCreateRequest);
     public Task DeleteAsync(Service service);
     public Task UpdateAsync(Service service);
+    public Task Subscribe(ServiceSubscribeRequest serviceSubscribeRequest);
 }
