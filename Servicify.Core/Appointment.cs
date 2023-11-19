@@ -12,4 +12,11 @@ public class Appointment : IIdentityEntity
     public long ClientId { get; set; }
     public Client Client { get; set; }
     public long Id { get; set; }
+
+    public Appointment(DateTime dateTime, long serviceId, long clientId)
+    {
+        DateTime = dateTime;
+        ServiceId = serviceId;
+        ClientId = clientId;
+    }
 }
