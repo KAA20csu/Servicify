@@ -6,6 +6,15 @@ public class Client : IIdentityEntity
     {
     }
 
+    public Client(string firstName, string lastName, string email, string phoneNumber)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        Email = email;
+        PhoneNumber = phoneNumber;
+        Appointments = new List<Appointment>();
+    }
+
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
