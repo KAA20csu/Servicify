@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Servicify.Core;
 using Servicify.DataAccess.Queries.Contracts;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace Servicify.DataAccess.Queries;
 
@@ -19,6 +21,16 @@ public class ServiceQuery : IServiceQuery
             .Services.Include(x => x.Subscribers)
             .Where(x => x.Id == id)
             .SingleOrDefaultAsync())!;
+    }
+
+    public async Task<List<Service>> GetAllByOrganizationIdAsync(long organizationId)
+    {
+        return await _appDbContext
+            .Services
+            .Include(x => x.Subscribers)
+            .Include(x => x.AvailableTimes)
+            .Where(x => x.OrganizationId == organizationId)
+            .ToListAsync();
     }
 
     public async Task<Service> FindByNameAsync(string name)

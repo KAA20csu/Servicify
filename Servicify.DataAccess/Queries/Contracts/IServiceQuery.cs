@@ -6,4 +6,5 @@ public interface IServiceQuery
 {
     public Task<Service> FindByIdAsync(long id);
     public Task<Service> FindByNameAsync(string name);
+    public Task<List<Service>> GetAllByOrganizationIdAsync(long organizationId);
 }

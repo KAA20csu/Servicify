@@ -1,4 +1,5 @@
-﻿using Servicify.Application.Requests;
+﻿using Servicify.Application.Dtos;
+using Servicify.Application.Requests;
 using Servicify.Application.Services.Contracts;
 using Servicify.Core;
 using Servicify.DataAccess.Commands.Contracts;
@@ -19,6 +20,17 @@ public class ServiceService : IServiceService
         _availableTimeService = availableTimeService;
         _clientQuery = clientQuery;
         _serviceQuery = serviceQuery;
+    }
+
+    public async Task<List<ServiceDto>> GetAllByOrganizationId(long orgnizationId)
+    {
+        var services = await _serviceQuery.GetAllByOrganizationIdAsync(orgnizationId);
+        return services.Select(x => new ServiceDto()
+        {
+            Name = x.Name, 
+            Description = x.Description, 
+            AvailableTimes = x.AvailableTimes.Select(y => new AvailableTimeDto() {Date = y.Date, Id = y.Id}).ToList()
+        }).ToList();
     }
 
     public async Task<long> CreateAsync(ServiceCreateRequest serviceCreateRequest)
