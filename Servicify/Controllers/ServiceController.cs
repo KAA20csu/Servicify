@@ -26,6 +26,11 @@ public class ServiceController : ControllerBase
         return _serviceService.GetAllByOrganizationId(organizationId);
     }
 
+    [HttpGet("all")]
+    public Task<List<ServiceAllDto>> GetAllAsync()
+    {
+        return _serviceService.GetAllAsync();
+    }
     [HttpPost]
     public Task<long> CreateService(ServiceCreateRequest serviceCreateRequest)
     {

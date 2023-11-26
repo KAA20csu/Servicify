@@ -10,5 +10,6 @@ public interface IServiceService
     public Task DeleteAsync(Service service);
     public Task UpdateAsync(Service service);
     public Task Subscribe(ServiceSubscribeRequest serviceSubscribeRequest);
-    Task<List<ServiceDto>> GetAllByOrganizationId(long orgnizationId);
+    public Task<List<ServiceDto>> GetAllByOrganizationId(long orgnizationId);
+    public Task<List<ServiceAllDto>> GetAllAsync();
 }

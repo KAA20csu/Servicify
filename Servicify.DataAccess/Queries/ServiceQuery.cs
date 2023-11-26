@@ -41,9 +41,12 @@ public class ServiceQuery : IServiceQuery
             .SingleOrDefaultAsync())!;
     }
 
-    public async Task<List<Service>> GetAllAsync(string name)
+    public async Task<List<Service>> GetAllAsync()
     {
         return await _appDbContext
-            .Services.AsNoTracking().ToListAsync();
+            .Services
+            .Include(x => x.Organization)
+            .AsNoTracking()
+            .ToListAsync();
     }
 }

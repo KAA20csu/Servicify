@@ -6,10 +6,11 @@ public class Service : IIdentityEntity
     {
     }
 
-    public Service(string name, string description, long organizationId, List<Appointment> appointments)
+    public Service(string name, string description, float cost, long organizationId, List<Appointment> appointments)
     {
         Name = name;
         Description = description;
+        Cost = cost;
         OrganizationId = organizationId;
         Appointments = appointments;
         Subscribers = new List<Client>();
@@ -17,6 +18,7 @@ public class Service : IIdentityEntity
 
     public string Name { get; set; }
     public string Description { get; set; }
+    public float Cost { get; set; }
     public long OrganizationId { get; set; }
     public Organization Organization { get; set; }
     public List<Appointment> Appointments { get; set; }

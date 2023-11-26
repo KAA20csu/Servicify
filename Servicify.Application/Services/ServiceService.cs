@@ -33,11 +33,18 @@ public class ServiceService : IServiceService
         }).ToList();
     }
 
+    public async Task<List<ServiceAllDto>> GetAllAsync()
+    {
+        var services = await _serviceQuery.GetAllAsync();
+        return services.Select(x => new ServiceAllDto() { Id = x.Id, Name = x.Name, Cost = x.Cost, OrganizationName = x.Organization.Name }).ToList();
+    }
+
     public async Task<long> CreateAsync(ServiceCreateRequest serviceCreateRequest)
     {
         var service = new Service(
             serviceCreateRequest.Name,
             serviceCreateRequest.Description,
+            serviceCreateRequest.Cost,
             serviceCreateRequest.OrganizationId,
             null);
         var serviceId = await _serviceCommand.CreateAsync(service);
