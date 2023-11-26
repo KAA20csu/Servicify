@@ -29,7 +29,7 @@ public class OrganizationQuery : IOrganizationQuery
             .SingleOrDefaultAsync())!;
     }
 
-    public async Task<List<Organization>> GetAllAsync(string name)
+    public async Task<List<Organization>> GetAllAsync()
     {
         return await _appDbContext
             .Organizations.AsNoTracking().ToListAsync();
