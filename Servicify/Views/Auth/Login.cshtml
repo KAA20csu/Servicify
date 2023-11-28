@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/css/auth/login.css">
+<div class="login-box">
+    <h2>Вход</h2>
+    <form method="post" action="/Account/Login">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <button class="login-box__btn" type="submit">Войти</button>
+    </form>
+        <div class="register-link">
+            <a href="#">Зарегистрироваться</a>
+        </div>
+</div>

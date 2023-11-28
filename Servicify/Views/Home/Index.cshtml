@@ -3,7 +3,7 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<link rel="stylesheet" href="css/home/index.css">
+<link rel="stylesheet" href="~/css/home/index.css">
 <div class="card-list">
     @await Html.PartialAsync("_Card", new CardViewModel{Title = "Салон красоты", LogoSrc = "images/salon-logos/salon1.png"})
     @await Html.PartialAsync("_Card", new CardViewModel{Title = "Снежинка", LogoSrc = "images/salon-logos/salon1.png"})

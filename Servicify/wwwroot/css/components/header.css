@@ -3,11 +3,14 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
 }
 
 .header__name {
-    margin: 0;
     font-size: 36px;
+    margin-bottom: 10px;
 }
 
 .header__btn {
@@ -19,4 +22,5 @@
     height: 59px;
     border-radius: 45px;
     border: none;
+    margin-bottom: 10px;
 }
