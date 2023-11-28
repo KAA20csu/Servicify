@@ -17,6 +17,7 @@ builder.Services.AddControllers(opt => { opt.OutputFormatters.RemoveType<HttpNoC
 builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMvc();
+builder.Services.AddMvc().AddRazorRuntimeCompilation();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ITempDataDictionaryFactory, TempDataDictionaryFactory>();
 
