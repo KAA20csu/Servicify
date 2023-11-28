@@ -1,9 +1,13 @@
-﻿<link rel="stylesheet" href="css/components/card.css">
+﻿@model Servicify.Models.CardViewModel
+
+<link rel="stylesheet" href="css/components/card.css">
 
 <div class="card">
-    <div class="card__salon-title">Title</div>
-    <button class="card__appointment-btn">Записаться</button>
+    <div class="card__content">
+        <div class="card__salon-title">@Model.Title</div>
+            <button class="card__appointment-btn">Записаться</button>
+    </div>
     <div class="card__salon-logo">
-        <img src="images/salon-logos/salon1.png">
+        <img src="@Model.LogoSrc">
     </div>
 </div>

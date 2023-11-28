@@ -1,16 +1,45 @@
 ﻿.card {
     display: flex;
-    align-items: flex-start; /* Выравнивание элементов по верхнему краю */
+    border: 1px solid black;
+    width: 450px;
+    height: 200px;
+    box-sizing: border-box;
+    overflow: hidden; 
 }
-
-.card__salon-title,
+.card__content {
+    flex: 2;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card__salon-title {
+    text-align: center;
+    font-size: 29px;
+}
 .card__appointment-btn {
-    /* Стили для названия и кнопки (слева) */
-    margin-right: 20px; /* Отступ справа между элементами */
+    align-self: center;
+    width: 60%;
+    height: 40%;
+    font-size: 20px;
+    color: white;
+    background-color: #03A0D2;
+    border-radius: 45px;
+    border: none;
+}
+.card__salon-logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+.card__salon-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.card__salon-logo {
-    /* Стили для логотипа (справа) */
-    flex-grow: 1; /* Занимает доступное пространство внутри flex-контейнера */
-    height: 100%; /* Занимает всю доступную высоту внутри flex-контейнера */
-}
+
