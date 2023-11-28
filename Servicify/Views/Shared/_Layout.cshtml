@@ -2,11 +2,14 @@
 <html>
 <head>
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 @await Html.PartialAsync("_Header")
 
-@RenderBody()
+<div class="main-content">
+    @RenderBody()
+</div>
 
 </body>
 </html>

@@ -1,0 +1,22 @@
+﻿.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.header__name {
+    margin: 0;
+    font-size: 36px;
+}
+
+.header__btn {
+    margin-right: 10px;
+    font-size: 22px;
+    color: white;
+    background-color: #03A0D2;
+    width: 132px;
+    height: 59px;
+    border-radius: 45px;
+    border: none;
+}
