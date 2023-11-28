@@ -12,7 +12,7 @@ public class OrganizationCommand : IOrganizationCommand
         _appDbContext = appDbContext;
     }
 
-    public async Task<long> CreateAsync(Organization organization)
+    public async Task<string> CreateAsync(Organization organization)
     {
         await _appDbContext.AddAsync(organization);
         await _appDbContext.SaveChangesAsync();
