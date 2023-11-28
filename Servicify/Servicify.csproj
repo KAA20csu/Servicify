@@ -27,4 +27,17 @@
     <ProjectReference Include="..\Servicify.DataAccess\Servicify.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Booking.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Error.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Organization.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Privacy.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Services.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Shared\_Layout.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\_ViewStart.cshtml" />
+  </ItemGroup>
+
 </Project>

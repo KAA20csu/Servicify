@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.EventLog;
 using Servicify.Application;
@@ -15,6 +16,9 @@ builder.Services.AddControllers(opt => { opt.OutputFormatters.RemoveType<HttpNoC
 
 builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddMvc();
+builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ITempDataDictionaryFactory, TempDataDictionaryFactory>();
 
 builder.Services.AddSwaggerGen(c =>
     {
