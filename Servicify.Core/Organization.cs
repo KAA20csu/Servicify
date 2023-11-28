@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿namespace Servicify.Core;
 
-namespace Servicify.Core;
-
-public class Organization : IUser
+public class Organization : IIdentityEntity
 {
     private Organization()
     {
@@ -13,6 +11,5 @@ public class Organization : IUser
     public string Address { get; set; }
     public string ContactInfo { get; set; }
     public List<Service> Services { get; set; }
-    public string Id { get; set; }
-    public string UserName { get; set; }
+    public long Id { get; set; }
 }

@@ -13,7 +13,7 @@ public class OrganizationQuery : IOrganizationQuery
         _appDbContext = appDbContext;
     }
 
-    public async Task<Organization> FindByIdAsync(string id)
+    public async Task<Organization> FindByIdAsync(long id)
     {
         return (await _appDbContext
             .Organizations
