@@ -20,6 +20,23 @@ builder.Services.AddMvc();
 builder.Services.AddMvc().AddRazorRuntimeCompilation();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ITempDataDictionaryFactory, TempDataDictionaryFactory>();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CookiePolicy", policy =>
+    {
+        // Добавьте свою логику проверки наличия куки
+        policy.RequireAssertion(context =>
+        {
+            // Проверка наличия куки "MyCookie"
+            if (context.User.HasClaim(c => c.Type == "AccessGUID"))
+            {
+                return true;
+            }
+            return false;
+        });
+    });
+});
+
 
 builder.Services.AddSwaggerGen(c =>
     {
