@@ -1,12 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Servicify.Application.Services.Contracts;
+using Servicify.DataAccess.Queries.Contracts;
 
 namespace Servicify.Controllers;
 
 public class HomeController : Controller
 {
-    [Route("/")]
-    public IActionResult Index()
+    private readonly IOrganizationService _organizationService;
+    private readonly IOrganizationQuery _organizationQuery;
+
+    public HomeController(IOrganizationService organizationService, IOrganizationQuery organizationQuery)
     {
-        return View();
+        _organizationService = organizationService;
+        _organizationQuery = organizationQuery;
+    }
+    [Route("/")]
+    public async Task<IActionResult> Index()
+    {
+        var orgs = await _organizationQuery.GetAllAsync();
+        return View(orgs);
     }
 }
