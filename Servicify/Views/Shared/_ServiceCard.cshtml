@@ -1,0 +1,12 @@
+﻿@model Servicify.Models.ServiceViewModel
+
+<link rel="stylesheet" href="~/css/components/serviceCard.css">
+
+<div class="service-card">
+    <div class="service-details">
+        <h3>Услуга: @Model.Name</h3>
+        <p>Продолжительность: @Model.Duration минут</p>
+        <p>Стоимость: @Model.Cost <span>&#8381;</span></p>
+    </div>
+    <button class="btn-book">Записаться</button>
+</div>
