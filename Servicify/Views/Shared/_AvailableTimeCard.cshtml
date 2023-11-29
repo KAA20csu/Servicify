@@ -1,0 +1,13 @@
+﻿@model Servicify.Models.AvailableTimeViewModel
+
+<link rel="stylesheet" href="~/css/components/availableTimeCard.css">
+
+<div class="service-card">
+    <div class="service-details">
+        <h3>Услуга: @Model.Name</h3>
+        <p>Продолжительность: @Model.Duration мин.</p>
+        <p>Дата: @Model.Date</p>
+        <p>Время: @Model.Time</p>
+    </div>
+    <button class="btn-book">Записаться</button>
+</div>

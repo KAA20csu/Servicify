@@ -36,5 +36,11 @@ namespace Servicify.Controllers
         {
             return View();
         }
+        
+        [Route("view/times")]
+        public IActionResult AvailableTime()
+        {
+            return View();
+        }
     }
 }
