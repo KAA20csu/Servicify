@@ -1,0 +1,25 @@
+﻿.service-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #fff;
+    width: 300px; /* Укажите ширину карточки */
+    margin: 20px; /* Укажите отступы по вашему усмотрению */
+}
+
+.service-details {
+    margin-bottom: 15px;
+}
+
+.service-details h3 {
+    margin-top: 0;
+}
+
+.btn-book {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1C6CD5;
+    color: #fff;
+    cursor: pointer;
+}

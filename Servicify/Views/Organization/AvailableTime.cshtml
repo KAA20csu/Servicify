@@ -1,0 +1,16 @@
+﻿@using Servicify.Models
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/css/organization/availableTime.css">
+
+<div class="available-time-list">
+    @await Html.PartialAsync("_AvailableTimeCard", new AvailableTimeViewModel(1, "Тест", "120", "12.02.2024", "23:45"))
+    @await Html.PartialAsync("_AvailableTimeCard", new AvailableTimeViewModel(1, "Тест", "120", "12.02.2024", "23:45"))
+    @await Html.PartialAsync("_AvailableTimeCard", new AvailableTimeViewModel(1, "Тест", "120", "12.02.2024", "23:45"))
+    @await Html.PartialAsync("_AvailableTimeCard", new AvailableTimeViewModel(1, "Тест", "120", "12.02.2024", "23:45"))
+    @await Html.PartialAsync("_AvailableTimeCard", new AvailableTimeViewModel(1, "Тест", "120", "12.02.2024", "23:45"))
+    @await Html.PartialAsync("_AvailableTimeCard", new AvailableTimeViewModel(1, "Тест", "120", "12.02.2024", "23:45"))
+</div>

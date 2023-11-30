@@ -7,9 +7,8 @@ using Servicify.DataAccess.Queries.Contracts;
 namespace Servicify.Controllers
 {
 
-    [Route("api/orgs")]
-    [ApiController]
-    public class OrganizationController : ControllerBase
+    [Route("organization/")]
+    public class OrganizationController : Controller
     {
         private readonly IOrganizationService _organizationService;
         private readonly IOrganizationQuery _organizationQuery;
@@ -30,6 +29,18 @@ namespace Servicify.Controllers
         public Task EditOrganization(EditOrganizationRequest editOrganizationRequest)
         {
             return _organizationService.UpdateAsync(editOrganizationRequest);
+        }
+        
+        [Route("view")]
+        public IActionResult ViewOne()
+        {
+            return View();
+        }
+        
+        [Route("view/times")]
+        public IActionResult AvailableTime()
+        {
+            return View();
         }
     }
 }

@@ -1,0 +1,7 @@
+﻿.available-time-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 5% auto;
+    max-width: 80%;
+}

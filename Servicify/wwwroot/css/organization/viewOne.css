@@ -1,0 +1,40 @@
+﻿.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 5% auto; 
+    max-width: 80%; 
+}
+.organization-container {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    margin-bottom: 30px;
+}
+
+.organization-details {
+    text-align: left;
+    width: 300px; 
+    margin-right: 20px;
+}
+
+.organization-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px; 
+}
+
+.organization-buttons button {
+    width: 150px; 
+    height: 50px; 
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1C6CD5;
+    color: #fff;
+}
+.organization-buttons button:hover {
+    background-color: #02769A;
+}
