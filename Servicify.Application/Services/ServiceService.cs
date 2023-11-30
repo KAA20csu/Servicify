@@ -27,6 +27,7 @@ public class ServiceService : IServiceService
         var services = await _serviceQuery.GetAllByOrganizationIdAsync(orgnizationId);
         return services.Select(x => new ServiceDto()
         {
+            Id = x.Id,
             Name = x.Name, 
             Description = x.Description, 
             AvailableTimes = x.AvailableTimes.Select(y => new AvailableTimeDto() {Date = y.Date, Id = y.Id}).ToList()
@@ -50,9 +51,13 @@ public class ServiceService : IServiceService
         var serviceId = await _serviceCommand.CreateAsync(service);
         foreach (var date in serviceCreateRequest.AvailableTime)
         {
-            var availableTime = new AvailableTime(serviceId, date);
+            DateTime utcDateTime = DateTime.SpecifyKind(date, DateTimeKind.Utc);
+
+            var availableTime = new AvailableTime(serviceId, utcDateTime);
             await _availableTimeService.CreateAsync(availableTime);
+            service.AvailableTimes.Add(availableTime);
         }
+        await _serviceCommand.UpdateAsync(service);
 
         return serviceId;
     }

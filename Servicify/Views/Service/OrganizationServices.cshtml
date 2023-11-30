@@ -15,3 +15,13 @@
         @await Html.PartialAsync("_ServiceCard", serviceViewModel)
     }
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btn-book").click(function () {
+            var serviceId = $(this).closest(".service-card").data("serviceid");
+            window.location.href = "/time/" + serviceId;
+        });
+    });
+</script>

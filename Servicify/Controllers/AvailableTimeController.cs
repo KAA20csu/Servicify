@@ -6,7 +6,6 @@ using Servicify.Models;
 
 namespace Servicify.Controllers
 {
-    [Authorize(Policy = "CookiePolicy")]
     [Route("time")]
     public class AvailableTimeController : Controller
     {
