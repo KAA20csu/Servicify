@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Servicify.Application.Services.Contracts;
 using Servicify.DataAccess.Queries.Contracts;
 
 namespace Servicify.Controllers;
 
+[Authorize(Policy = "CookiePolicy")]
 public class HomeController : Controller
 {
     private readonly IOrganizationService _organizationService;

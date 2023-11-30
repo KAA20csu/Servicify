@@ -5,12 +5,12 @@
 <link rel="stylesheet" href="~/css/auth/login.css">
 <div class="login-box">
     <h2>Вход</h2>
-    <form method="post" action="/Account/Login">
+    <form method="post" action="/auth/login">
         @Html.AntiForgeryToken()
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
+            <label for="Name">Имя организации:</label>
+            <input id="name" name="name">
         </div>
         <div class="form-group">
             <label for="password">Пароль:</label>

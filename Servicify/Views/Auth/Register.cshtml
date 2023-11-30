@@ -5,20 +5,26 @@
 <link rel="stylesheet" href="~/css/auth/register.css">
 <div class="login-box">
     <h2>Регистрация</h2>
-    <form method="post" action="/Account/Register">
-        @Html.AntiForgeryToken()
-
+    <form method="post" action="/auth/signup">
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
+            <label for="Name">Имя организации:</label>
+            <input id="name" name="Name">
         </div>
         <div class="form-group">
-            <label for="password">Пароль:</label>
-            <input type="password" id="password" name="password">
+            <label for="Description">Описание:</label>
+            <input id="description" name="Description">
         </div>
         <div class="form-group">
-             <label for="password-repeat">Повтор пароля:</label>
-             <input type="password" id="password-repeat" name="password-repeat">
+            <label for="Address">Адрес:</label>
+            <input id="address" name="Address">
+        </div>
+        <div class="form-group">
+            <label for="ContactInfo">Контакты:</label>
+            <input id="contactInfo" name="ContactInfo">
+        </div>
+        <div class="form-group">
+            <label for="Password">Пароль:</label>
+            <input type="password" id="password" name="Password">
         </div>
         <button class="login-box__btn" type="submit">Зарегистрироваться</button>
     </form>

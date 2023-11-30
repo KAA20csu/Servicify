@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,14 @@ builder.Services.AddAuthorization(options =>
         });
     });
 });
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.Cookie.Name = "AccessGUID"; // Имя куки
+            options.LoginPath = "/auth/login"; // Путь для перенаправления на страницу входа
+            options.AccessDeniedPath = "/auth/signup"; // Путь для перенаправления в случае отказа в доступе
+        });
 
 
 builder.Services.AddSwaggerGen(c =>
@@ -158,7 +167,7 @@ using (var serviceScope = app.Services.CreateScope())
 app.UseHttpsRedirection();
 app.UseRouting();
 
-app.UseAuthentication();
+//app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

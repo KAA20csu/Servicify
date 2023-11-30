@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Servicify.Core;
 using Servicify.DataAccess.Commands.Contracts;
 using Servicify.DataAccess.Queries.Contracts;
 using Servicify.Models;
+using System.Security.Claims;
 
 namespace Servicify.Controllers;
 
@@ -16,8 +19,12 @@ public class AuthController : Controller
         _organizationCommand = organizationCommand;
         _organizationQuery = organizationQuery;
     }
-
-    [Route("login")]
+    [HttpGet("login")]
+    public IActionResult Login()
+    {
+        return View();
+    }
+    [HttpPost("login")]
     public async Task<IActionResult> Login(LoginViewModel loginViewModel)
     {
         var org = await _organizationQuery.FindByNameAsync(loginViewModel.Name);
@@ -28,12 +35,29 @@ public class AuthController : Controller
                 Expires = DateTime.Now.AddDays(7),
                 HttpOnly = true
             };
-            Response.Cookies.Append("AccessGUID", Guid.NewGuid().ToString(), cookieOptions);
+            string guid = Guid.NewGuid().ToString();
+            Response.Cookies.Append("AccessGUID", guid, cookieOptions);
+            var claims = new List<Claim>
+            {
+                new Claim("AccessGUID", guid)
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            return RedirectToAction("Index", "Home");
         }
         return View();
     }
-    
-    [Route("signup")]
+
+    [HttpGet("signup")]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+    [HttpPost("signup")]
     public IActionResult Register(RegisterViewModel registerViewModel)
     {
         var org = new Organization(registerViewModel.Name, registerViewModel.Description, registerViewModel.Address, registerViewModel.ContactInfo, registerViewModel.Password);
