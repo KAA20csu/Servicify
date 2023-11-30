@@ -6,7 +6,7 @@ using Servicify.Application.Services.Contracts;
 namespace Servicify.Controllers;
 
 [Authorize(Policy = "CookiePolicy")]
-[Route("api/appointment")]
+[Route("appointment")]
 public class AppointmentController : ControllerBase
 {
     private readonly IAppointmentService _appointmentService;
@@ -16,8 +16,8 @@ public class AppointmentController : ControllerBase
         _appointmentService = appointmentService;
     }
 
-    [HttpPost]
-    public Task<long> CreateAppointment(CreateAppointmentRequest createAppointmentRequest)
+    [HttpPost("create")]
+    public Task<long> CreateAppointment([FromBody]CreateAppointmentRequest createAppointmentRequest)
     {
         return _appointmentService.CreateAsync(createAppointmentRequest);
     }

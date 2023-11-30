@@ -14,7 +14,8 @@
         availableTimes.Service.Name, 
         "120", 
         availableTimes.Date.ToLongDateString(), 
-        availableTimes.Date.ToLongTimeString());
+        availableTimes.Date.ToLongTimeString(),
+        availableTimes.ServiceID);
         @await Html.PartialAsync("_AvailableTimeCard", availableTimeViewModel)
     }
 </div>

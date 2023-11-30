@@ -1,6 +1,20 @@
-﻿@model Servicify.Models.AvailableTimeViewModel
+﻿<!-- Ваше представление (например, _ServiceCard.cshtml) -->
+@model Servicify.Models.AvailableTimeViewModel
 
 <link rel="stylesheet" href="~/css/components/availableTimeCard.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
 <div class="service-card">
     <div class="service-details">
@@ -8,5 +22,86 @@
         <p>Продолжительность: @Model.Duration мин.</p>
         <p>Дата: @Model.Date</p>
     </div>
-    <button class="btn-book">Записаться</button>
+    <button class="btn-book" id="btnBook">Записаться</button>
 </div>
+
+<!-- Модальное окно -->
+<div class="modal-body container" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Форма записи</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="firstNameInput">Имя:</label>
+                <input type="text" id="firstNameInput" />
+
+                <label for="lastNameInput">Фамилия:</label>
+                <input type="text" id="lastNameInput" />
+
+                <label for="emailInput">Email:</label>
+                <input type="text" id="emailInput" />
+
+                <label for="phoneNumberInput">Номер телефона:</label>
+                <input type="text" id="phoneNumberInput" />
+
+                <input type="hidden" id="availableTimeIdInput" value="@Model.Id" />
+                <input type="hidden" id="serviceIdInput" value="@Model.ServiceId" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" onclick="submitBookingForm()">Записаться</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function submitBookingForm() {
+        var availableTimeId = $("#availableTimeIdInput").val();
+        var serviceId = $("#serviceIdInput").val();
+        var firstName = $("#firstNameInput").val();
+        var lastName = $("#lastNameInput").val();
+        var email = $("#emailInput").val();
+        var phoneNumber = $("#phoneNumberInput").val();
+
+        var requestData = {
+            AvailableTimeId: availableTimeId,
+            ServiceId: serviceId,
+            FirstName: firstName,
+            LastName: lastName,
+            Email: email,
+            PhoneNumber: phoneNumber
+        };
+
+        // Отправка данных на сервер с использованием AJAX
+        $.ajax({
+            url: '/appointment/create', // Замените на реальный путь к вашему методу контроллера
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(requestData),
+            success: function (response) {
+                // Обработка успешного ответа от сервера
+                console.log('Success:', response);
+                // После успешной обработки закройте модальное окно
+                $("#bookingModal").modal("hide");
+            },
+            error: function (error) {
+                // Обработка ошибок
+                console.log('Error:', error);
+            }
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $('#btnBook').on('click', function () {
+            $('#bookingModal').modal('show');
+        });
+    });
+</script>
+
+

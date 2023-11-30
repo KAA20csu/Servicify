@@ -22,8 +22,7 @@ public class AppointmentService : IAppointmentService
         var availableTime = await _availableTimeQuery.FindByIdAsync(createAppointmentRequest.AvailableTimeId);
         var appointment = new Appointment(
             availableTime.Date,
-            createAppointmentRequest.ServiceId,
-            createAppointmentRequest.ClientId);
+            createAppointmentRequest.ServiceId, 1L);
         return await _appointmentCommand.CreateAsync(appointment);
     }
 
