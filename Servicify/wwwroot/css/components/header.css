@@ -23,4 +23,12 @@
     border-radius: 45px;
     border: none;
     margin-bottom: 10px;
+    transition: background-color 0.3s; /* Добавляем анимацию перехода */
+    cursor: pointer; /* Изменение курсора на стрелку при наведении */
+}
+
+/* Применяем стили при нажатии на кнопку */
+.header__btn:active {
+    background-color: #027292; /* Изменяем цвет фона при наведении */
+    cursor: pointer; /* Изменяем курсор на стрелку */
 }

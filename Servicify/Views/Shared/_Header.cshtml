@@ -4,7 +4,19 @@
     <div class="header__name">
         Servicify
     </div>
-    <button class="header__btn">
+    <button class="header__btn" id="profileBtn">
         Профиль 
     </button>
 </div>
+
+<!-- JavaScript код для перенаправления -->
+<script>
+    // Получаем кнопку по ID
+    const profileBtn = document.getElementById('profileBtn');
+    
+    // Добавляем обработчик события для клика на кнопку
+    profileBtn.addEventListener('click', function() {
+        // Выполняем перенаправление на URL контроллера метода ViewOne (замените на ваш URL)
+        window.location.href = '/auth/login'; // замените на соответствующий URL вашего метода контроллера
+    });
+</script>

@@ -32,16 +32,11 @@ namespace Servicify.Controllers
             return _organizationService.UpdateAsync(editOrganizationRequest);
         }
         
-        [Route("view")]
-        public IActionResult ViewOne()
+        [Route("view/{id}")]
+        public async Task<IActionResult> ViewOne(long id)
         {
-            return View();
-        }
-        
-        [Route("view/times")]
-        public IActionResult AvailableTime()
-        {
-            return View();
+            var organization = await _organizationQuery.FindByIdAsync(id);
+            return View(organization);
         }
     }
 }
