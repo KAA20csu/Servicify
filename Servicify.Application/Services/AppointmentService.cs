@@ -10,19 +10,27 @@ public class AppointmentService : IAppointmentService
 {
     private readonly IAppointmentCommand _appointmentCommand;
     private readonly IAvailableTimeQuery _availableTimeQuery;
+    private readonly IClientCommand _clientCommand;
 
-    public AppointmentService(IAppointmentCommand appointmentCommand, IAvailableTimeQuery availableTimeQuery)
+    public AppointmentService(IAppointmentCommand appointmentCommand, IAvailableTimeQuery availableTimeQuery, IClientCommand clientCommand)
     {
         _appointmentCommand = appointmentCommand;
         _availableTimeQuery = availableTimeQuery;
+        _clientCommand = clientCommand;
     }
 
     public async Task<long> CreateAsync(CreateAppointmentRequest createAppointmentRequest)
     {
+        var client = new Client(createAppointmentRequest.FirstName,
+            createAppointmentRequest.LastName,
+            createAppointmentRequest.Email,
+            createAppointmentRequest.PhoneNumber);
+        var clientId = await _clientCommand.CreateAsync(client);
         var availableTime = await _availableTimeQuery.FindByIdAsync(createAppointmentRequest.AvailableTimeId);
         var appointment = new Appointment(
             availableTime.Date,
-            createAppointmentRequest.ServiceId, 1L);
+            createAppointmentRequest.ServiceId, 
+            clientId);
         return await _appointmentCommand.CreateAsync(appointment);
     }
 
