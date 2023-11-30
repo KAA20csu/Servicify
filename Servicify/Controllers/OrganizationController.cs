@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Servicify.Application.Requests;
 using Servicify.Application.Services.Contracts;
 using Servicify.Core;
@@ -6,7 +7,7 @@ using Servicify.DataAccess.Queries.Contracts;
 
 namespace Servicify.Controllers
 {
-
+    [Authorize(Policy = "CookiePolicy")]
     [Route("organization/")]
     public class OrganizationController : Controller
     {

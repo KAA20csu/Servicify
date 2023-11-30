@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Servicify.Application.Services.Contracts;
 using Servicify.DataAccess.Queries.Contracts;
 using Servicify.Models;
 
 namespace Servicify.Controllers
 {
+    [Authorize(Policy = "CookiePolicy")]
     [Route("time")]
     public class AvailableTimeController : Controller
     {

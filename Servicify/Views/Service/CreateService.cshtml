@@ -1,0 +1,80 @@
+﻿@model Servicify.Models.CreateServiceViewModel
+
+@{
+    ViewBag.Title = "Create Service";
+    Layout = "_Layout";
+}
+
+<h2>Create Service</h2>
+
+<link rel="stylesheet" href="~/css/auth/login.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<div class="login-box">
+    <h2>Вход</h2>
+    <form method="post" action="/services/create" id="createServiceForm">
+        <div class="form-group">
+            <label asp-for="Name">Name:</label>
+            <input asp-for="Name" class="form-control" id="Name"/>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Description:</label>
+            <textarea asp-for="Description" class="form-control" id="Description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cost">Cost:</label>
+            <input asp-for="Cost" class="form-control" id="Cost"/>
+        </div>
+
+        <div class="form-group" id="availableTimesContainer">
+            <label for="AvailableTimes">Available Times:</label>
+
+            <div class="available-time">
+                <input asp-for="AvailableTimes" type="datetime-local" class="form-control" />
+            </div>
+
+            <button type="button" id="addTimeButton">Add Time</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary" onclick="submitForm()">Create</button>
+    </form>
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('#addTimeButton').on('click', function () {
+                    var newTimeHtml = '<div class="available-time">' +
+                        '<input asp-for="AvailableTimes" type="datetime-local" class="form-control" />' +
+                        '</div>';
+
+                    $('#availableTimesContainer').append(newTimeHtml);
+                });
+
+                $('#createServiceForm').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: '/services/create',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            Name: $('#Name').val(),
+                            Description: $('#Description').val(),
+                            Cost: $('#Cost').val(),
+                            AvailableTimes: $('.available-time input[type=datetime-local]')
+                                .map(function () { return $(this).val(); }).get()
+                        }),
+                        success: function (data) {
+                            // Обработка успешного ответа
+                        },
+                        error: function (xhr, status, error) {
+                            // Обработка ошибки
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+
+</div>

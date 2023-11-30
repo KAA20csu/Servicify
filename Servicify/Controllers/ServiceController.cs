@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Servicify.Application.Dtos;
 using Servicify.Application.Requests;
 using Servicify.Application.Services.Contracts;
 using Servicify.DataAccess.Queries.Contracts;
+using Servicify.Models;
 
 namespace Servicify.Controllers;
 
+[Authorize(Policy = "CookiePolicy")]
 [Route("services")]
 public class ServiceController : Controller
 {
@@ -30,10 +33,23 @@ public class ServiceController : Controller
     {
         return _serviceService.GetAllAsync();
     }
-    [HttpPost]
-    public Task<long> CreateService(ServiceCreateRequest serviceCreateRequest)
+    [HttpGet("create")]
+    public IActionResult CreateService()
     {
-        return _serviceService.CreateAsync(serviceCreateRequest);
+        return View();
+    }
+    [HttpPost("create")]
+    public Task<long> CreateService([FromBody] CreateServiceViewModel createServiceViewModel)
+    {
+        var orgId = Request.Cookies["OrgId"];
+        var service = new ServiceCreateRequest() {  
+            OrganizationId = long.Parse(orgId), 
+            Name = createServiceViewModel.Name, 
+            Description = createServiceViewModel.Description, 
+            Cost = createServiceViewModel.Cost, 
+            AvailableTime = createServiceViewModel.AvailableTimes};
+
+        return _serviceService.CreateAsync(service);
     }
 
     [HttpPost("subscribe")]

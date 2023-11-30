@@ -37,9 +37,11 @@ public class AuthController : Controller
             };
             string guid = Guid.NewGuid().ToString();
             Response.Cookies.Append("AccessGUID", guid, cookieOptions);
+            Response.Cookies.Append("OrgId", org.Id.ToString(), cookieOptions);
             var claims = new List<Claim>
             {
-                new Claim("AccessGUID", guid)
+                new Claim("AccessGUID", guid),
+                new Claim("OrgId", org.Id.ToString())
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

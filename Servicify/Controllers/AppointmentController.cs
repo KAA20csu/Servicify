@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Servicify.Application.Requests;
 using Servicify.Application.Services.Contracts;
 
 namespace Servicify.Controllers;
 
+[Authorize(Policy = "CookiePolicy")]
 [Route("api/appointment")]
-[ApiController]
 public class AppointmentController : ControllerBase
 {
     private readonly IAppointmentService _appointmentService;

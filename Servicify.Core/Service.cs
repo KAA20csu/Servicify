@@ -6,14 +6,15 @@ public class Service : IIdentityEntity
     {
     }
 
-    public Service(string name, string description, float cost, long organizationId, List<Appointment> appointments)
+    public Service(string name, string description, float cost, long organizationId, List<AvailableTime> availableTimes)
     {
         Name = name;
         Description = description;
         Cost = cost;
         OrganizationId = organizationId;
-        Appointments = appointments;
+        Appointments = new List<Appointment>();
         Subscribers = new List<Client>();
+        AvailableTimes = availableTimes;
     }
 
     public string Name { get; set; }
