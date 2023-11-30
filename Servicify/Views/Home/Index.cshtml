@@ -9,12 +9,19 @@
     {
         var cardViewModel = new CardViewModel
                 {
+                    CardId = organization.Id.ToString(),
                     Title = organization.Name,
                     LogoSrc = "images/salon-logos/salon1.png" 
                 };
         @await Html.PartialAsync("_Card", cardViewModel)
     }
-    @*@await Html.PartialAsync("_Card", new CardViewModel{Title = "Салон красоты", LogoSrc = "images/salon-logos/salon1.png"})
-    @await Html.PartialAsync("_Card", new CardViewModel{Title = "Снежинка", LogoSrc = "images/salon-logos/salon1.png"})
-    @await Html.PartialAsync("_Card", new CardViewModel{Title = "Салон красоты Надежда", LogoSrc = "images/salon-logos/salon1.png"})*@
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".card").click(function () {
+            var id = $(this).data("id");
+            window.location.href = "/services/" + id;
+        });
+    });
+</script>
