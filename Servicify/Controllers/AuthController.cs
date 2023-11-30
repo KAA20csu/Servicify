@@ -50,7 +50,8 @@ public class AuthController : Controller
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
             return RedirectToAction("Index", "Home");
         }
-        return View();
+
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpGet("signup")]
@@ -64,6 +65,6 @@ public class AuthController : Controller
     {
         var org = new Organization(registerViewModel.Name, registerViewModel.Description, registerViewModel.Address, registerViewModel.ContactInfo, registerViewModel.Password);
         _organizationCommand.CreateAsync(org);
-        return View();
+        return RedirectToAction("Login");
     }
 }
