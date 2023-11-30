@@ -1,20 +1,14 @@
-﻿<!-- Ваше представление (например, _ServiceCard.cshtml) -->
-@model Servicify.Models.AvailableTimeViewModel
+﻿@model Servicify.Models.AvailableTimeViewModel
 
 <link rel="stylesheet" href="~/css/components/availableTimeCard.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css">
-
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <!-- Popper.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
 
 <!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <div class="service-card">
     <div class="service-details">
@@ -22,11 +16,10 @@
         <p>Продолжительность: @Model.Duration мин.</p>
         <p>Дата: @Model.Date</p>
     </div>
-    <button class="btn-book" id="btnBook">Записаться</button>
+    <button class="btn-book" data-available-time-id="@Model.Id" data-service-id="@Model.ServiceId">Записаться</button>
 </div>
 
-<!-- Модальное окно -->
-<div class="modal-body container" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+<div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,7 +51,6 @@
         </div>
     </div>
 </div>
-
 <script>
     function submitBookingForm() {
         var availableTimeId = $("#availableTimeIdInput").val();
@@ -96,12 +88,21 @@
         });
     }
 </script>
+
 <script>
-    $(document).ready(function () {
-        $('#btnBook').on('click', function () {
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".btn-book").click(function (e) {
+            e.preventDefault();
+            // Заполнение модального окна данными
+            var availableTimeId = $(this).data('available-time-id');
+            var serviceId = $(this).data('service-id');
+
+            $("#bookingModal #availableTimeIdInput").val(availableTimeId);
+            $("#bookingModal #serviceIdInput").val(serviceId);
+
+            // Открытие модального окна
             $('#bookingModal').modal('show');
         });
     });
 </script>
-
-
