@@ -1,0 +1,20 @@
+﻿@using Servicify.Core;
+@using Servicify.Models;
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+@model List<AvailableTime>
+<link rel="stylesheet" href="~/css/organization/availableTime.css">
+
+<div class="available-time-list">
+    @foreach (var availableTimes in Model)
+    {
+        var availableTimeViewModel = new AvailableTimeViewModel(availableTimes.Id, 
+        availableTimes.Service.Name, 
+        "120", 
+        availableTimes.Date.ToLongDateString(), 
+        availableTimes.Date.ToLongTimeString());
+        @await Html.PartialAsync("_AvailableTimeCard", availableTimeViewModel)
+    }
+</div>

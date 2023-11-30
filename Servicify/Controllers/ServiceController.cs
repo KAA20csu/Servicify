@@ -2,14 +2,12 @@
 using Servicify.Application.Dtos;
 using Servicify.Application.Requests;
 using Servicify.Application.Services.Contracts;
-using Servicify.Core;
 using Servicify.DataAccess.Queries.Contracts;
 
 namespace Servicify.Controllers;
 
-[Route("api/services")]
-[ApiController]
-public class ServiceController : ControllerBase
+[Route("services")]
+public class ServiceController : Controller
 {
     private readonly IServiceService _serviceService;
     private readonly IServiceQuery _serviceQuery;
@@ -20,10 +18,11 @@ public class ServiceController : ControllerBase
         _serviceQuery = serviceQuery;
     }
 
-    [HttpGet]
-    public Task<List<ServiceDto>> GetAllByOrganizationIdAsync([FromQuery] long organizationId)
+    [HttpGet("{organizationId}")]
+    public async Task<IActionResult> OrganizationServices(long organizationId)
     {
-        return _serviceService.GetAllByOrganizationId(organizationId);
+        var services = await _serviceService.GetAllByOrganizationId(organizationId);
+        return View(services);
     }
 
     [HttpGet("all")]

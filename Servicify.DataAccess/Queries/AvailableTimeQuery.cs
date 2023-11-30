@@ -21,6 +21,15 @@ public class AvailableTimeQuery : IAvailableTimeQuery
             .SingleOrDefaultAsync())!;
     }
 
+    public async Task<List<AvailableTime>> FindByServiceIdAsync(long id)
+    {
+        return (await _appDbContext
+            .AvailableTimes
+            .Where(x => x.ServiceID == id)
+            .Include(x => x.Service)
+            .ToListAsync());
+    }
+
     public async Task<List<AvailableTime>> GetAllAsync(long id)
     {
         return await _appDbContext

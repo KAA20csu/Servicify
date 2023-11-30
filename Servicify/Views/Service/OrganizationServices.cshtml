@@ -1,0 +1,17 @@
+﻿@using Servicify.Application.Dtos;
+@using Servicify.Models;
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@model List<ServiceDto>
+<link rel="stylesheet" href="~/css/home/index.css">
+<div class="card-list">
+    @foreach (var service in Model)
+    {
+        var serviceViewModel = new ServiceViewModel(service.Id, service.Name, "120", service.Cost);
+        @await Html.PartialAsync("_ServiceCard", serviceViewModel)
+    }
+</div>
