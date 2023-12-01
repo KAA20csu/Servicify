@@ -1,4 +1,5 @@
 ﻿@using Servicify.Application.Dtos;
+@using Servicify.Core;
 @using Servicify.Models;
 
 @{
@@ -6,10 +7,15 @@
     Layout = "_Layout";
 }
 
-@model List<ServiceDto>
+@model Organization
 <link rel="stylesheet" href="~/css/home/index.css">
+<div class="organization-info">
+    <h1>@Model.Name</h1>
+    <h2>@Model.Description</h2>
+    <h2>Предложения: @Model.Services.Count</h2>
+</div>
 <div class="card-list">
-    @foreach (var service in Model)
+    @foreach (var service in Model.Services)
     {
         var serviceViewModel = new ServiceViewModel(service.Id, service.Name, "120", service.Cost);
         @await Html.PartialAsync("_ServiceCard", serviceViewModel)

@@ -14,17 +14,19 @@ public class ServiceController : Controller
 {
     private readonly IServiceService _serviceService;
     private readonly IServiceQuery _serviceQuery;
+    private readonly IOrganizationQuery _organizationQuery;
 
-    public ServiceController(IServiceService serviceService, IServiceQuery serviceQuery)
+    public ServiceController(IServiceService serviceService, IServiceQuery serviceQuery, IOrganizationQuery organizationQuery)
     {
         _serviceService = serviceService;
         _serviceQuery = serviceQuery;
+        _organizationQuery = organizationQuery;
     }
 
     [HttpGet("{organizationId}")]
     public async Task<IActionResult> OrganizationServices(long organizationId)
     {
-        var services = await _serviceService.GetAllByOrganizationId(organizationId);
+        var services = await _organizationQuery.FindByIdAsync(organizationId);
         return View(services);
     }
 
