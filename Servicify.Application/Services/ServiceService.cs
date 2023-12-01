@@ -65,8 +65,20 @@ public class ServiceService : IServiceService
     public async Task Subscribe(ServiceSubscribeRequest serviceSubscribeRequest)
     {
         var service = await _serviceQuery.FindByIdAsync(serviceSubscribeRequest.ServiceId);
-        var client = await _clientQuery.FindByIdAsync(serviceSubscribeRequest.ClientId);
-        client.Subscriptions.Add(service);
+        var client = await _clientQuery.FindByPhoneNumberAsync(serviceSubscribeRequest.PhoneNumber);
+        if (client == null)
+        {
+            client = new Client(serviceSubscribeRequest.FirstName,
+                serviceSubscribeRequest.LastName,
+                serviceSubscribeRequest.Email,
+                serviceSubscribeRequest.PhoneNumber);
+
+            client.Subscriptions.Add(service);
+        }
+        else
+        {
+            client.Subscriptions.Add(service);
+        }
         service.Subscribers.Add(client);
         await _serviceCommand.UpdateAsync(service);
     }

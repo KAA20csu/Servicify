@@ -1,0 +1,105 @@
+﻿@using Servicify.Models
+@model Servicify.Core.Service
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/css/organization/viewOne.css">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<div class="service-container">
+    <div class="service-details">
+        <h1>@Model.Id</h1>
+        <h2>@Model.Name</h2>
+        <p>@Model.Description</p>
+    </div>
+    <div class="service-buttons">
+        <button class="subscribe-btn">Подписаться на предложение</button>
+    </div>
+</div>
+<div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Форма записи</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="firstNameInput">Имя:</label>
+                <input type="text" id="firstNameInput" />
+
+                <label for="lastNameInput">Фамилия:</label>
+                <input type="text" id="lastNameInput" />
+
+                <label for="emailInput">Email:</label>
+                <input type="text" id="emailInput" />
+
+                <label for="phoneNumberInput">Номер телефона:</label>
+                <input type="text" id="phoneNumberInput" />
+
+                <input type="hidden" id="serviceIdInput" value="@Model.Id" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" onclick="submitBookingForm()">Записаться</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function submitBookingForm() {
+        var serviceId = @Model.Id;
+        var firstName = $("#firstNameInput").val();
+        var lastName = $("#lastNameInput").val();
+        var email = $("#emailInput").val();
+        var phoneNumber = $("#phoneNumberInput").val();
+
+        var requestData = {
+            ServiceId: serviceId,
+            FirstName: firstName,
+            LastName: lastName,
+            Email: email,
+            PhoneNumber: phoneNumber
+        };
+
+        $.ajax({
+            url: '/services/subscribe',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(requestData),
+            success: function (response) {
+                console.log('Success:', response);
+                $("#bookingModal").modal("hide");
+            },
+            error: function (error) {
+                console.log('Error:', error);
+            }
+        });
+    }
+</script>
+
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".subscribe-btn").click(function (e) {
+            e.preventDefault();
+            
+            var serviceId = $(this).data('service-id');
+
+            $("#bookingModal #serviceIdInput").val(serviceId);
+
+            $('#bookingModal').modal('show');
+        });
+    });
+</script>

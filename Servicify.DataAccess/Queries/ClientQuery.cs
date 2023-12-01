@@ -22,6 +22,15 @@ public class ClientQuery : IClientQuery
             .SingleOrDefaultAsync())!;
     }
 
+    public async Task<Client> FindByPhoneNumberAsync(string phone)
+    {
+        return (await _appDbContext
+            .Clients
+            .Include(x => x.Subscriptions)
+            .Where(x => x.PhoneNumber == phone)
+            .SingleOrDefaultAsync())!;
+    }
+
     public async Task<Client> FindByNameAsync(string firstName, string lastName)
     {
         return (await _appDbContext

@@ -57,8 +57,15 @@ public class ServiceController : Controller
     }
 
     [HttpPost("subscribe")]
-    public Task Subscribe(ServiceSubscribeRequest serviceSubscribeRequest)
+    public Task Subscribe([FromBody] ServiceSubscribeRequest serviceSubscribeRequest)
     {
         return _serviceService.Subscribe(serviceSubscribeRequest);
+    }
+
+    [HttpGet("get/{id}")]
+    public async Task<IActionResult> ViewService(long id)
+    {
+        var service = await _serviceQuery.FindByIdAsync(id);
+        return View(service);
     }
 }

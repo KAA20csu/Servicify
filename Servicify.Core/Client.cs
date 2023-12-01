@@ -13,6 +13,7 @@ public class Client : IIdentityEntity
         Email = email;
         PhoneNumber = phoneNumber;
         Appointments = new List<Appointment>();
+        Subscriptions = new List<Service>();
     }
 
     public string FirstName { get; set; }
