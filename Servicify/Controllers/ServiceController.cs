@@ -33,11 +33,15 @@ public class ServiceController : Controller
     {
         return _serviceService.GetAllAsync();
     }
+
+    [Authorize(Policy = "CookiePolicy")]
     [HttpGet("create")]
     public IActionResult CreateService()
     {
         return View();
     }
+
+    [Authorize(Policy = "CookiePolicy")]
     [HttpPost("create")]
     public Task<long> CreateService([FromBody] CreateServiceViewModel createServiceViewModel)
     {

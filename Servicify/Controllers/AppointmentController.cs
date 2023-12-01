@@ -5,7 +5,6 @@ using Servicify.Application.Services.Contracts;
 
 namespace Servicify.Controllers;
 
-[Authorize(Policy = "CookiePolicy")]
 [Route("appointment")]
 public class AppointmentController : ControllerBase
 {

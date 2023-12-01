@@ -17,6 +17,7 @@ public class OrganizationQuery : IOrganizationQuery
     {
         return (await _appDbContext
             .Organizations
+            .Include(x => x.Services)
             .Where(x => x.Id == id)
             .SingleOrDefaultAsync())!;
     }

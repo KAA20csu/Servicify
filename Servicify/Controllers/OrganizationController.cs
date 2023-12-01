@@ -7,8 +7,8 @@ using Servicify.DataAccess.Queries.Contracts;
 
 namespace Servicify.Controllers
 {
-    [Authorize(Policy = "CookiePolicy")]
-    [Route("organization/")]
+    
+    [Route("organization")]
     public class OrganizationController : Controller
     {
         private readonly IOrganizationService _organizationService;
@@ -26,17 +26,20 @@ namespace Servicify.Controllers
             return _organizationQuery.GetAllAsync();
         }
 
+        [Authorize(Policy = "CookiePolicy")]
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetProfile()
+        {
+            var orgId = Request.Cookies["OrgId"];
+            var organization = await _organizationQuery.FindByIdAsync(long.Parse(orgId!));
+            return View(organization);
+        }
+
+        [Authorize(Policy = "CookiePolicy")]
         [HttpPost]
         public Task EditOrganization(EditOrganizationRequest editOrganizationRequest)
         {
             return _organizationService.UpdateAsync(editOrganizationRequest);
-        }
-        
-        [Route("view/{id}")]
-        public async Task<IActionResult> ViewOne(long id)
-        {
-            var organization = await _organizationQuery.FindByIdAsync(id);
-            return View(organization);
         }
     }
 }
