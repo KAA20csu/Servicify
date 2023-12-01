@@ -5,3 +5,25 @@
 button {
     font-family: Inter, sans-serif;
 }
+#bookingModal {
+    text-align: center !important;
+}
+#bookingModal .modal-title {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+}
+#bookingModal .modal-body label {
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+}
+#bookingModal .modal-footer button {
+    margin-right: 1rem !important;
+    border-radius: 15px;
+}
+#bookingModal .modal-footer .btn-primary {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+}
+#bookingModal .close {
+    font-size: 1.5rem !important;
+}
