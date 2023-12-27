@@ -1,12 +1,11 @@
 ﻿@model Servicify.Models.CardViewModel
 
-<link rel="stylesheet" href="~/css/components/card.css">
-
-<div class="card" data-id="@Model.CardId">
-    <div class="card__content">
-        <div class="card__salon-title">@Model.Title</div>
+<div class="main-block" data-id="@Model.CardId">
+    <div class="block-info">
+        <div class="block-name">@Model.Title</div>
+        <button class="block-button">Просмотреть</button>
     </div>
-    <div class="card__salon-logo">
+    <div class="block-image">
         <img src="@Model.LogoSrc">
     </div>
 </div>

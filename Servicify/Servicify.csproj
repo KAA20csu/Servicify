@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
     <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
@@ -39,6 +40,9 @@
     <_ContentIncludedByDefault Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\_ViewStart.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\home\index.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\auth\login.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\auth\register.css" />
   </ItemGroup>
 
 </Project>

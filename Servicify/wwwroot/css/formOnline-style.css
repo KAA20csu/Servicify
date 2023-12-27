@@ -1,0 +1,41 @@
+
+.main__content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 100px;
+    width: 70%;
+    margin: 126px auto;
+}
+
+.services{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+.services__info{
+    border-radius: 15px;
+    border: 1px solid #000;
+}
+
+.info__content{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services__info-title {
+    margin: 20px 0;
+}
+
+.services__button{
+    margin-top: 20px;
+    border-radius: 45px;
+    color: #FEF4F4;
+    background-color: #03A0D2;
+    width: 70%;
+    height: 50px;
+    margin-bottom: 20px;
+    border: none;
+
+}

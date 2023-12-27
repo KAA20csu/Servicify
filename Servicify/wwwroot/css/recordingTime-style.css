@@ -1,0 +1,48 @@
+.main__content{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.title, .date{
+    text-align: center;
+    margin: 40px 0;
+}
+
+.service-name{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+
+}
+
+.service-name div{
+    border-radius: 15px;
+    border: 1px solid #000;
+    padding: 20px 60px;
+}
+
+
+.service-coming{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.contact-service{
+    border-radius: 15px;
+    border: 1px solid #000;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #04658E;;
+    color: white;
+    align-items: center;
+}
+
+.service-date{
+    border-radius: 45px;
+    background: #03A0D2;
+    padding: 6px 13px 5px 14px;
+
+}

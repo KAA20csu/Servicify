@@ -14,4 +14,9 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Servicify.DataAccess\Servicify.DataAccess.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Servicify.Core\Servicify.Core.csproj" />
+	  <ProjectReference Include="..\Servicify.DataAccess\Servicify.DataAccess.csproj" />
+	</ItemGroup>
 </Project>

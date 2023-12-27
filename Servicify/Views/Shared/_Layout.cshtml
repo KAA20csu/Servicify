@@ -1,15 +1,29 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/components/header.css">
+    <link rel="stylesheet" href="~/css/components/footer.css">
+    <link rel="stylesheet" href="~/css/mainPage-style.css">
+    <link rel="stylesheet" href="~/css/reset-style.css">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/global.css">
 </head>
 <body>
 @await Html.PartialAsync("_Header")
 
-<div class="main-content">
-    @RenderBody()
-</div>
-    @RenderSection("Scripts", required: false)
+<main class="main">
+    <div class="main__content">
+        @RenderBody()
+    </div>
+</main>
+@await Html.PartialAsync("_Footer")
 </body>
 </html>
