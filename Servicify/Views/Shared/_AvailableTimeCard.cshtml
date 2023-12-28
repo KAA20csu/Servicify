@@ -1,6 +1,7 @@
 ﻿@model Servicify.Models.AvailableTimeViewModel
 
-<link rel="stylesheet" href="~/css/components/availableTimeCard.css">
+<link rel="stylesheet" href="~/css/formOnline-style.css">
+<link rel="stylesheet" href="~/css/global.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -10,20 +11,31 @@
 <!-- Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<div class="service-card">
-    <div class="service-details">
-        <h3>Услуга: @Model.Name</h3>
-        <p>Продолжительность: @Model.Duration мин.</p>
-        <p>Дата: @Model.Date</p>
+<div class="services__info">
+    <div class="info__content">
+        <div class="services__info-title">
+            @Model.Name
+        </div>
+
+        <div class="services__price">
+            @Model.Duration мин.
+            <br>
+            Дата: @Model.Date
+            <br>
+            Время: @Model.Time
+        </div>
+
+        <button class="services__button" data-available-time-id="@Model.Id" data-service-id="@Model.ServiceId">Записаться</button>
     </div>
-    <button class="btn-book" data-available-time-id="@Model.Id" data-service-id="@Model.ServiceId">Записаться</button>
 </div>
+
 
 <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="bookingModalLabel">Форма записи</h5>
+                <h5 class="modal-title" id="success-message" style="display: none;">Вы успешно записаны!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -78,8 +90,13 @@
             success: function (response) {
                 // Обработка успешного ответа от сервера
                 console.log('Success:', response);
+                $("#success-message").show();
+                        // Скрыть форму, если требуется
+                $(".modal-body").hide();
+                $(".btn-primary").hide();
+                $("#bookingModalLabel").hide();
                 // После успешной обработки закройте модальное окно
-                $("#bookingModal").modal("hide");
+                //$("#bookingModal").modal("hide");
             },
             error: function (error) {
                 // Обработка ошибок
@@ -92,7 +109,7 @@
 <script>
     $(function () {
         $.ajaxSetup({ cache: false });
-        $(".btn-book").click(function (e) {
+        $(".services__button").click(function (e) {
             e.preventDefault();
             // Заполнение модального окна данными
             var availableTimeId = $(this).data('available-time-id');

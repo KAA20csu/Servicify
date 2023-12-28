@@ -8,25 +8,37 @@
 }
 
 @model Organization
-<link rel="stylesheet" href="~/css/home/index.css">
-<div class="organization-info">
-    <h1>@Model.Name</h1>
-    <h2>@Model.Description</h2>
-    <h2>Предложения: @Model.Services.Count</h2>
-</div>
-<div class="card-list">
-    @foreach (var service in Model.Services)
-    {
-        var serviceViewModel = new ServiceViewModel(service.Id, service.Name, "120", service.Cost);
-        @await Html.PartialAsync("_ServiceCard", serviceViewModel)
-    }
+<link rel="stylesheet" href="~/css/personal-style.css">
+
+<div class="main__content flex flex-col items-center justify-center">
+    <h1 class="content__title">@Model.Name</h1>
+    <div class="content-info">
+        <div class="content__first-line flex justify-between">
+            <div class="w-1/2 bg-gray-500 rounded-lg h-96"></div>
+            <div class="w-1/2 bg-gray-500 rounded-lg h-96"></div>
+
+        </div>
+        <div class="description mt-4 p-4">
+            @Model.Description
+        </div>
+
+        <button class="content__button mt-6 w-full py-2 create-btn">Добавить услугу</button>
+
+        <div class="services mt-4">
+            @foreach (var service in Model.Services)
+            {
+                var serviceViewModel = new ServiceViewModel(service.Id, service.Name, "120", service.Cost);
+                @await Html.PartialAsync("_ServiceCard", serviceViewModel)
+            }
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function () {
-        $(".btn-book").click(function () {
-            var serviceId = $(this).closest(".service-card").data("serviceid");
+        $(".services__button").click(function () {
+            var serviceId = $(this).closest(".services__info").data("serviceid");
             window.location.href = "/time/" + serviceId;
         });
     });

@@ -4,7 +4,8 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<link rel="stylesheet" href="~/css/organization/availableTime.css">
+<link rel="stylesheet" href="~/css/recordingTime-style.css">
+<link rel="stylesheet" href="~/css/formOnline-style.css">
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -17,16 +18,15 @@
 <!-- Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<div class="available-time-list">
+<div class="main__content grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" style="width: 70%; margin: 126px auto;">
     @foreach (var availableTimes in Model)
-    {
-        var availableTimeViewModel = new AvailableTimeViewModel(availableTimes.Id,
-        availableTimes.Service.Name,
-        "120",
-        availableTimes.Date.ToLongDateString(),
-        availableTimes.Date.ToLongTimeString(),
-        availableTimes.ServiceID);
-        @await Html.PartialAsync("_AvailableTimeCard", availableTimeViewModel)
-    }
+        {
+            var availableTimeViewModel = new AvailableTimeViewModel(availableTimes.Id,
+            availableTimes.Service.Name,
+            "120",
+            availableTimes.Date.ToLongDateString(),
+            availableTimes.Date.ToLongTimeString(),
+            availableTimes.ServiceID);
+            @await Html.PartialAsync("_AvailableTimeCard", availableTimeViewModel)
+        }
 </div>
-

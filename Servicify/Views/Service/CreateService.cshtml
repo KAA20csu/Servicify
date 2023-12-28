@@ -5,40 +5,45 @@
     Layout = "_Layout";
 }
 
-<h2>Create Service</h2>
-
-<link rel="stylesheet" href="~/css/auth/login.css">
+<link rel="stylesheet" href="~/css/login-style.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<div class="login-box">
-    <h2>Вход</h2>
-    <form method="post" action="/services/create" id="createServiceForm">
-        <div class="form-group">
-            <label asp-for="Name">Name:</label>
-            <input asp-for="Name" class="form-control" id="Name"/>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Description">Description:</label>
-            <textarea asp-for="Description" class="form-control" id="Description"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Cost">Cost:</label>
-            <input asp-for="Cost" class="form-control" id="Cost"/>
-        </div>
-
-        <div class="form-group" id="availableTimesContainer">
-            <label for="AvailableTimes">Available Times:</label>
-
-            <div class="available-time">
-                <input asp-for="AvailableTimes" type="datetime-local" class="form-control" />
-            </div>
-
-            <button type="button" id="addTimeButton">Add Time</button>
-        </div>
-
-        <button type="submit" class="btn btn-primary" onclick="submitForm()">Create</button>
-    </form>
+<div class="main__content flex justify-between items-center pt-16">
+    <div class="login__form">
+    <h1 class="form__content-title">Создание услуги</h1>
+            <form class="form__content" method="post" action="/services/create" id="createServiceForm">
+                <div class="form-group">
+                    <label asp-for="Name">Наименование:</label>
+                    <input asp-for="Name" class="form-control" id="Name"/>
+                </div>
+        
+                <div class="form-group">
+                    <label asp-for="Description">Описание:</label>
+                    <textarea asp-for="Description" class="form-control" id="Description"></textarea>
+                </div>
+        
+                <div class="form-group">
+                    <label asp-for="Description">Продолжительность:</label>
+                    <textarea asp-for="Description" class="form-control" id="Description"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Cost">Стоимость:</label>
+                    <input asp-for="Cost" class="form-control" id="Cost"/>
+                </div>
+        
+                <div class="form-group" id="availableTimesContainer">
+                    <label for="AvailableTimes">Доступное время:</label>
+        
+                    <div class="available-time">
+                        <input asp-for="AvailableTimes" type="datetime-local" class="form-control"/>
+                    </div>
+        
+                    <button type="button" id="addTimeButton">Добавить время</button>
+                </div>
+        
+                <button type="submit" class="form__content-button login" onclick="submitForm()">Создать</button>
+            </form>
+    </div>
 
     @section Scripts {
         <script>
