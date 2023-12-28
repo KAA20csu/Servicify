@@ -2,30 +2,32 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<link rel="stylesheet" href="~/css/auth/register.css">
-<div class="login-box">
-    <h2>Регистрация</h2>
-    <form method="post" action="/auth/signup">
-        <div class="form-group">
-            <label for="Name">Имя организации:</label>
-            <input id="name" name="Name">
-        </div>
-        <div class="form-group">
-            <label for="Description">Описание:</label>
-            <input id="description" name="Description">
-        </div>
-        <div class="form-group">
-            <label for="Address">Адрес:</label>
-            <input id="address" name="Address">
-        </div>
-        <div class="form-group">
-            <label for="ContactInfo">Контакты:</label>
-            <input id="contactInfo" name="ContactInfo">
-        </div>
-        <div class="form-group">
-            <label for="Password">Пароль:</label>
-            <input type="password" id="password" name="Password">
-        </div>
-        <button class="login-box__btn" type="submit">Зарегистрироваться</button>
-    </form>
+<link rel="stylesheet" href="~/css/registration-style.css">
+<div class="main__content flex items-center">
+    <div class="registration__form">
+        <form class="form__content" method="post" action="/auth/signup">
+                <h2 class="form__content-title">Зарегистрироваться</h2>
+                <div class="form-group">
+                    <label for="Name">Имя организации:</label>
+                    <input id="name" name="Name">
+                </div>
+                <div class="form-group">
+                    <label for="Description">Описание:</label>
+                    <input id="description" name="Description">
+                </div>
+                <div class="form-group">
+                    <label for="Address">Адрес:</label>
+                    <input id="address" name="Address">
+                </div>
+                <div class="form-group">
+                    <label for="ContactInfo">Контакты:</label>
+                    <input id="contactInfo" name="ContactInfo">
+                </div>
+                <div class="form-group">
+                    <label for="Password">Пароль:</label>
+                    <input type="password" id="password" name="Password">
+                </div>
+                <button class="form__content-button" type="submit">Зарегистрироваться</button>
+            </form>
+    </div>
 </div>

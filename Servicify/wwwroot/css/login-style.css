@@ -31,7 +31,10 @@
 }
 
 .form__content-title{
+    font-family: 'Comfortaa', sans-serif;
     padding-bottom: 30px;
+    font-weight: bold;
+    font-size: 40px;
 }
 
 .form__content p {

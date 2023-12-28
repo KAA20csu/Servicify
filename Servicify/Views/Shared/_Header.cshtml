@@ -3,8 +3,16 @@
         <div class="header__title">Servicy</div>
         <div class="header__menu">
             <ul>
-                <li><button>Главная</button></li>
-                <li><button>Войти</button></li>
+                <li><button id="main-page-btn">Главная</button></li>
+                 @if (User.Identity.IsAuthenticated)
+                 {
+                    <li><button id="profileBtn">Личный кабинет</button></li>
+                    <li><button id="exitBtn">Выйти</button></li>
+                 }
+                 else
+                 {
+                    <li><button id="loginBtn">Войти</button></li>
+                 }
             </ul>
         </div>
     </div>
@@ -14,10 +22,34 @@
 <script>
     // Получаем кнопку по ID
     const profileBtn = document.getElementById('profileBtn');
+    const mainPageBtn = document.getElementById('main-page-btn');
+    const loginBtn = document.getElementById('loginBtn');
+    const exitBtn = document.getElementById('exitBtn');
     
-    // Добавляем обработчик события для клика на кнопку
-    profileBtn.addEventListener('click', function() {
+    if (profileBtn != null) {
+        // Добавляем обработчик события для клика на кнопку
+            profileBtn.addEventListener('click', function() {
+                // Выполняем перенаправление на URL контроллера метода ViewOne (замените на ваш URL)
+                window.location.href = '/organization/profile'; // замените на соответствующий URL вашего метода контроллера
+            });
+    }
+    
+    mainPageBtn.addEventListener('click', function() {
         // Выполняем перенаправление на URL контроллера метода ViewOne (замените на ваш URL)
-        window.location.href = '/auth/login'; // замените на соответствующий URL вашего метода контроллера
+        window.location.href = '/'; // замените на соответствующий URL вашего метода контроллера
     });
+    
+    if (loginBtn != null) {
+        loginBtn.addEventListener('click', function() {
+                // Выполняем перенаправление на URL контроллера метода ViewOne (замените на ваш URL)
+                window.location.href = '/auth/login'; // замените на соответствующий URL вашего метода контроллера
+            });
+    }
+    if (exitBtn != null) { 
+         exitBtn.addEventListener('click', function() {
+                // Выполняем перенаправление на URL контроллера метода ViewOne (замените на ваш URL)
+                window.location.href = '/auth/logout'; // замените на соответствующий URL вашего метода контроллера
+                console.log('sd')
+            });
+    }
 </script>

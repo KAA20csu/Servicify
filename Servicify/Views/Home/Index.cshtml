@@ -3,25 +3,26 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<link rel="stylesheet" href="~/css/home/index.css">
-<div class="card-list">
+
+<div class="main__content">
     @foreach (var organization in Model)
-    {
-        var cardViewModel = new CardViewModel
-                {
-                    CardId = organization.Id.ToString(),
-                    Title = organization.Name,
-                    LogoSrc = "images/salon-logos/salon1.png" 
-                };
-        @await Html.PartialAsync("_Card", cardViewModel)
-    }
-</div>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $(".card").click(function () {
-            var id = $(this).data("id");
-            window.location.href = "/services/" + id;
+            {
+                var cardViewModel = new CardViewModel
+                        {
+                            CardId = organization.Id.ToString(),
+                            Title = organization.Name,
+                            LogoSrc = "images/salon-logos/salon1.png" 
+                        };
+                @await Html.PartialAsync("_Card", cardViewModel)
+            }
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".main-block").click(function () {
+                var id = $(this).data("id");
+                window.location.href = "/services/" + id;
+            });
         });
-    });
-</script>
+    </script>
+</div>
+

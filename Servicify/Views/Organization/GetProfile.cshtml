@@ -4,23 +4,33 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<link rel="stylesheet" href="~/css/organization/viewOne.css">
-<div class="organization-container">
-    <div class="organization-details">
-        <h2>@Model.Name</h2>
-        <p>@Model.Description</p>
-    </div>
-    <div class="organization-buttons">
-        <button class="create-btn">Создать предложение</button>
+<link rel="stylesheet" href="~/css/personal-style.css">
+
+<div class="main__content flex flex-col items-center justify-center">
+    <h1 class="content__title">@Model.Name</h1>
+    <div class="content-info">
+        <div class="content__first-line flex justify-between">
+            <div class="w-1/2 bg-gray-500 rounded-lg h-96"></div>
+            <div class="w-1/2 bg-gray-500 rounded-lg h-96"></div>
+
+        </div>
+        <div class="description mt-4 p-4">
+            @Model.Description
+        </div>
+
+        <button class="content__button mt-6 w-full py-2 create-btn">Добавить услугу</button>
+
+        <div class="services mt-4">
+            @foreach (var service in Model.Services)
+            {
+                var serviceViewModel = new ServiceViewModel(service.Id, service.Name, "120", service.Cost);
+                @await Html.PartialAsync("_ServiceCard", serviceViewModel)
+            }
+        </div>
     </div>
 </div>
-<div class="service-list">
-    @foreach (var service in Model.Services)
-    {
-        var serviceViewModel = new ServiceViewModel(service.Id, service.Name, "120", service.Cost);
-        @await Html.PartialAsync("_ServiceCard", serviceViewModel)
-    }
-</div>
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var createButton = document.querySelector('.create-btn');
@@ -29,4 +39,3 @@
         });
     });
 </script>
-

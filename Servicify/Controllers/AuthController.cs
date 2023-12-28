@@ -24,6 +24,18 @@ public class AuthController : Controller
     {
         return View();
     }
+    [HttpGet("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+        // Чтобы удалить куки, которые вы создали в прошлом методе
+        Response.Cookies.Delete("AccessGUID");
+        Response.Cookies.Delete("OrgId");
+
+        return RedirectToAction("Index", "Home");
+    }
+    
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginViewModel loginViewModel)
     {

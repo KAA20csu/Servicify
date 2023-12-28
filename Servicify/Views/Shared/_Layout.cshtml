@@ -14,16 +14,16 @@
     <link rel="stylesheet" href="~/css/components/footer.css">
     <link rel="stylesheet" href="~/css/mainPage-style.css">
     <link rel="stylesheet" href="~/css/reset-style.css">
+    <link rel="stylesheet" href="~/css/global.css">
     <title>@ViewData["Title"]</title>
 </head>
 <body>
 @await Html.PartialAsync("_Header")
 
-<main class="main">
-    <div class="main__content">
-        @RenderBody()
-    </div>
-</main>
+<div class="main">
+    @RenderBody()
+</div>
 @await Html.PartialAsync("_Footer")
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
